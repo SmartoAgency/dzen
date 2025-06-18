@@ -1,0 +1,130 @@
+.team {
+    position: relative;
+    padding-top: calc(var(--section-v-offset) * 1.5);
+    padding-bottom: calc(var(--section-v-offset) * 1.5);
+    overflow: hidden;
+    @include to(1024px){
+        padding-top: var(--section-v-offset);
+        padding-bottom: var(--section-v-offset);
+    }
+    @include to(600px){
+        padding-top: calc(var(--section-v-offset) * 1.5);
+        padding-bottom: 0;
+    }
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__title {
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
+        width: 100%;
+        margin-bottom: pxWidthInVw(60);
+        @include to(1024px){
+            margin-bottom: 60px;
+        }
+        @include to(600px){
+            margin-bottom: 24px;
+        }
+    }
+    &__item {
+        width: 50%;
+        display: flex;
+        padding-left: var(--page-side-fields);
+        padding-right: pxWidthInVw(160);
+        padding-top: pxWidthInVw(80);
+        padding-bottom: pxWidthInVw(80);
+        @include to(1024px){
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+        }
+        @include to(600px){
+            width: 100%;
+            padding-top: 48px;
+            padding-bottom: 48px;
+        }
+        &-img {
+            width: 40%;
+            padding-right: 20px;
+            @include to(1024px){
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 56px;
+            }
+            @include to(600px){
+                margin-bottom: 28px;
+            }
+            img {
+                height: 50px;
+                width: pxWidthInVw(198);
+                object-fit: contain;
+                object-position: top;
+                @include to(1024px){
+                    width: auto;
+                    height: 50px;
+                }
+            }
+        }
+        &-text {
+            width: 60%;
+            @include to(1024px){
+                width: 100%;
+            }
+        }
+        &-title {
+            margin-bottom: 12px;
+        }
+        &-subtitle {
+            margin-bottom: 40px;
+            @include to(600px){
+                margin-bottom: 20px;
+            }
+        }
+        &-description {
+            p~p {
+                margin-top: 20px;
+            }
+        }
+        &-button {
+            margin-top: 40px;
+        }
+    }
+    @include from(601px){
+        &__item {
+            border-top: 1px solid rgba(193, 194, 178, 0.20);
+            border-bottom: 1px solid rgba(193, 194, 178, 0.20);
+            border-right: 1px solid rgba(193, 194, 178, 0.20);
+        }
+        &__item:nth-child(2n) {
+            border-left: 1px solid rgba(193, 194, 178, 0.20);
+        }
+        &__item:nth-child(n+4) {
+            margin-top: -1px;
+        }
+    }
+    @include to(600px){
+        &__item {
+            border: 1px solid rgba(193, 194, 178, 0.20);
+        }
+        &__item~&__item {
+            margin-top: -1px;
+        }
+        &__item:last-child {
+            display: none;
+        }
+    }
+}

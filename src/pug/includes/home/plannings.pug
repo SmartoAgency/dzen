@@ -1,0 +1,104 @@
+-
+  var plans = [
+    {
+      title: 'КОТЕДЖ DZEN',
+      description: 'У вартість входить котедж з дизайнерським ремонтом, меблями та технікою, а також керування комплексом. ',
+      items: [
+        {title: "",
+        value: "",}
+      ],
+      slider: [
+        './assets/images/home/plannings/cottage-dzen.jpg'
+
+      ]
+    },
+    {
+      title: 'DZEN VILLAGE',
+      description: 'У вартість входить вілла з дизайнерським ремонтом, меблями та технікою, а також керування комплексом. ',
+      items: [
+        {title: "",
+        value: "",}
+      ],
+      slider: [
+        './assets/images/home/plannings/dzen-village.jpg'
+
+      ]
+    },
+    {
+      title: 'АПАРТАМЕНТИ КОНДОГОТЕЛЮ',
+      description: 'У вартість входить апартаменти з дизайнерським ремонтом, меблями та технікою, а також керування комплексом. ',
+      items: [
+        {title: "",
+        value: "",}
+      ],
+      slider: [
+        './assets/images/home/plannings/apartments-condohotel.jpg'
+
+      ]
+    },
+    {
+      title: 'VIP-РЕЗИДЕНЦІЇ',
+      description: 'У вартість входить резиденція з дизайнерським ремонтом, меблями та технікою, а також керування комплексом. ',
+      items: [
+        {title: "",
+        value: "",}
+      ],
+      slider: [
+        './assets/images/home/plannings/vip-residence.jpg'
+
+      ]
+    }
+  ]
+
+#invest-offer.plannings
+  .plannings__content
+    .plannings__title.text-style-1920-h-2.text-style-768-h-2.text-style-375-h-2
+      span(data-split-lines-new-animation) Інвестиційна пропозиція
+      .plannings__title-o
+        button(type="button" data-plannings-slider-prev ) 
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.3846 20L4 12M4 12L11.3846 4M4 12L20 12" stroke="#F5F6E6"/>
+          </svg>
+        button(type="button" data-plannings-slider-next) 
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.6154 20L20 12M20 12L12.6154 4M20 12L4 12" stroke="#F5F6E6"/>
+          </svg>
+
+
+
+
+    .swiper-container(data-plannings-slider)
+      .swiper-wrapper
+        each val in plans
+          .swiper-slide
+            .card-planning 
+              .card-planning__slider.swiper-container(data-planning-item-slider)
+                //- .card-planning__slider-nav
+                //-   .card-planning__slider-nav-arrow(data-planning-item-slider-prev)
+                //-     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                //-       <path d="M11.5385 18L6 12M6 12L11.5385 6M6 12L18 12" stroke="#F5F6E6"/>
+                //-     </svg>
+                //-   .card-planning__slider-nav-digits
+                //-     span(data-planning-item-slider-current) 01
+                //-     span &nbsp;/&nbsp;
+                //-     span(data-planning-item-slider-all) 01
+                //-   .card-planning__slider-nav-arrow(data-planning-item-slider-next)
+                //-     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                //-       <path d="M12.4615 18L18 12M18 12L12.4615 6M18 12L6 12" stroke="#F5F6E6"/>
+                //-     </svg>
+                .swiper-wrapper
+                  each slide in val.slider
+                    .swiper-slide
+                      img(src=slide, alt="", srcset="" loading="lazy")
+              .card-planning__title #{val.title}
+              .card-planning__description #{val.description}
+              .card-planning__list
+                each item in val.items
+                  .card-planning__info-item
+                    .card-planning__info-item-title #{item.title}
+                    .card-planning__info-item-value #{item.value}
+              .card-planning__buttons
+                //- button(type="button").card-planning__button.card-planning__button1 
+                //-   span Планування
+                button(type="button").card-planning__button.card-planning__button2 
+                  span Отримати пропозицію першим

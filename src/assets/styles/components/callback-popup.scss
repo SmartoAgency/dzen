@@ -1,0 +1,102 @@
+.callback-popup {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100% - var(--header-h) - 1px);
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
+    @include to(600px){
+        height: calc(100% - var(--header-h));
+    }
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+    }
+
+    &__close {
+        position: absolute;
+        right: var(--page-side-fields);
+        top: var(--page-side-fields);
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        z-index: 3;
+        border-radius: 100px;
+        background: var(--color-white-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include to(600px){
+            top: auto;
+            bottom: calc(100% + var(--header-h) / 2 + 2px);
+            transform: translateY(50%);
+        }
+    }
+    @media (hover: hover) {
+        &__close {
+            svg {
+                transform-origin: center;
+                transition: transform 0.25s ease-out;
+            }
+            &:hover svg{
+                transform: rotate(90deg);
+            }
+        }
+    }
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-black);
+        opacity: 0.8;
+    }
+    &__title {
+        margin-bottom: 12px;
+        padding-right: 30%;
+    }
+    &__content {
+        position: relative;
+        z-index: 2;
+        width: 50%;
+        background-color: var(--color-white-bb);
+        padding: 20px 40px 40px 40px;
+        display: flex;
+        flex-direction: column;
+        @include to(1024px){
+            padding: 80px var(--page-side-fields) 80px var(--page-side-fields);
+            width: 100%;
+        }
+        @include to(600px){
+            padding: 20px var(--page-side-fields);
+        }
+        .dzen-form {
+            margin-top: auto;
+            width: calc(100% - pxWidthInVw(240));
+            margin-left: auto;
+            @include to(1024px){
+                width: calc(100% - 240px);
+            }
+            @include to(600px){
+                width: calc(100% - 60px);
+            }
+        }
+        &>.color-black {
+            @include from-to(601px, 1024px){
+                padding-right: 70%;
+            }
+            @include to(600px){
+                padding-right: 35%;
+            }
+        }
+    }
+}

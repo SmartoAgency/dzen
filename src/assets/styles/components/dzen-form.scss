@@ -1,0 +1,158 @@
+.dzen-form {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    position: relative;
+    @include to(600px){
+        gap: 50px;
+
+    }
+    &__input-group {
+        position: relative;
+        border-bottom: 1px solid rgba(10, 15, 19, 0.20);
+        padding-top: 24px;
+        padding-bottom: 24px;
+        @include text-style-1920-body;
+        input {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--color-black);
+            @include text-style-1920-body;
+            &::placeholder {
+                color: var(--color-black)
+            }
+        }
+        &-required-label {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+        }
+    }
+    &__input-message {
+        @include text-style-1920-small-buttons;
+        padding: 4px 12px;
+        background: #E76A6A;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        @include to(600px){
+            font-size: 10px;
+        }
+        &:empty {
+            display: none;
+        }
+    }
+    &__submit {
+        display: flex;
+        padding: 23px 40px;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        align-self: stretch;
+        border-radius: 100px;
+        background-color: var(--color-white-light);
+        font-family: $default-font;
+        width: 100%;
+        color: var(--color-black);
+        @include text-style-1920-body;
+        @include to(1024px){
+            text-transform: uppercase;
+            @include text-style-1920-small-buttons;
+        }
+        @include to(600px){
+            margin-top: -22px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+        &:disabled {
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+        @media (hover: hover) {
+            transition: .2s ease-in-out;
+            position: relative;
+            background-color: transparent;
+            overflow: hidden;
+            span,svg {
+                position: relative;
+                z-index: 2;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-black);
+                transform: translateY(-100%);
+                transition: .2s ease-in;
+                // z-index: -1;
+                    border-radius: 100px;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-white-light);
+                transition: .2s ease-out;
+                // z-index: -1;
+                border-radius: 100px;
+            }
+            &:hover {
+                color: var(--color-white-light);
+            }
+            &:hover:after {
+                transform: translateY(0);
+            }
+            &:hover:before {
+                transform: translateY(100%);
+            }
+            &:hover svg [fill] {
+                fill: var(--color-black);
+            }
+            &:hover svg [stroke] {
+                stroke: var(--color-black);
+            }
+        }
+    }
+    [data-btn-submit-text] {
+        display: none;
+    }
+    [data-success] {
+        background-color: var(--color-white-bb) !important;
+    }
+    &__success {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-white-bb);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: 'Inter Display';
+        font-size: 21px;
+        font-style: normal;
+        line-height: 120%;
+        text-transform: uppercase;
+        z-index: 2;
+        padding: 8px;
+        justify-content: space-between;
+        gap: 100px;
+        height: max-content;
+        padding-top: 177px;
+    }
+    &.success &__submit:not(.success-close),
+    &.success &__input-group {
+        opacity: 0;
+    }
+}

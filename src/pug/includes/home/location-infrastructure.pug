@@ -1,0 +1,49 @@
+- 
+  var infra = [
+    {
+      title: 'МУЛЬТИФУНКЦІОНАЛЬНИЙ ІВЕНТ-ХОЛ',
+      text: 'Мультифункціональний простір для корпоративних заходів, конференцій та приватних івентів',
+      url: './assets/images/home/location-infrastructure/event-hall.svg',
+    },
+    {
+      title: 'ГАСТРОЗОНА',
+      text: 'Ресторан авторської кухні та банкетний зал з можливістю кейтерингу',
+      url: './assets/images/home/location-infrastructure/food.svg',
+    },
+    {
+      title: 'СПА-КОМПЛЕКС',
+      text: 'Сучасний спа-центр з провідними експертами у сфері wellness.',
+      url: './assets/images/home/location-infrastructure/spa.svg',
+    },
+    {
+      title: 'МЕДИЧНИЙ ХАБ',
+      text: 'Клініка відновлювальної медицини з інноваційними технологіями діагностики та терапії',
+      url: './assets/images/home/location-infrastructure/medicine.svg',
+    },
+    {
+      title: 'AI-КЛІНІКА',
+      text: 'Перший в Україні центр персоналізованої психологічної допомоги з штучним інтелектом',
+      url: './assets/images/home/location-infrastructure/brain.svg',
+    }
+  ]
+
+.location-infrastructure
+  .location-infrastructure__content
+    #location.location-infrastructure__left
+      .map#map
+      .location-infrastructure__left-title.text-style-1920-72.text-style-768-h-2.text-style-375-h-2(data-split-lines-new-animation) Локація
+      .location-infrastructure__label
+        img(src='./assets/images/home/location-infrastructure/car.svg', alt="", srcset=""  loading="lazy")
+        .location-infrastructure__label-text 
+          .text-style-1920-h-6.color-white-light 40 ХВ
+          .text-style-1920-small-buttons.color-white-bb до міста Київ
+    #infrastructure.location-infrastructure__right
+      .location-infrastructure__right-title.text-style-1920-72.text-style-768-h-2.text-style-375-h-2(data-split-lines-new-animation) Інфраструктура у комплексі
+      .location-infrastructure__infrastructure
+        each item in infra
+          .location-infrastructure__item
+            .location-infrastructure__item-img
+              img(src=item.url, alt=item.title  loading="lazy")
+            .location-infrastructure__item-text
+              .location-infrastructure__item-title.text-style-1920-h-6= item.title
+              .location-infrastructure__item-description= item.text

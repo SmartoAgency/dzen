@@ -1,0 +1,177 @@
+.contact-screen {
+    position: relative;
+    padding-top: var(--section-v-offset);
+    padding-bottom: var(--section-v-offset);
+    padding-left: var(--page-side-fields);
+    padding-right: var(--page-side-fields);
+    min-height: 100vh;
+    overflow: hidden;
+    @include to(600px){
+        padding-bottom: calc(var(--section-v-offset) * 2.1);
+    }
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        @include to(1024px){
+            row-gap: 80px;
+        }
+        @include to(600px){
+            row-gap: 46px;
+        }
+    }
+    &__left {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        @include to(1024px){
+            width: 100%;
+        }
+        &-title {
+            @include from(1025px){
+                padding-left: var(--page-side-fields);
+            }
+            @include to(1024px){
+                margin-bottom: 70px;
+            }
+            @include to(600px){
+                margin-bottom: 40px;
+            }
+        }
+        &-info {
+            margin-top: auto;
+            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            @include to(1024px){
+                row-gap: 20px;
+            }
+            @include to(600px){
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+    &__group {
+        padding: pxWidthInVw(40) 0;
+        .button-small~.button-small {
+            margin-top: 4px;
+        }
+        &-title {
+            margin-bottom: 8px;
+        }
+        &-text {
+            margin-bottom: 20px;
+        }
+        &-mobile-bigger-margin-title {
+            @include to(600px){
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &__inner-group~&__inner-group {
+        margin-top: pxWidthInVw(40);
+        @include to(1024px){
+            margin-top: 40px;
+        }
+    }
+    &__link {
+        display: flex;
+        align-items: center;
+        color: var(--color-black);
+        text-decoration: none;
+        svg {
+            margin-right: 12px;
+        }
+        @media (hover: hover) {
+			svg {
+				transform-origin: 50% 50%;
+				transform-box: fill-box;
+			}
+			span {
+				position: relative;
+			}
+			span:after {
+				content: '';
+				position: absolute;
+				top: calc(100% + 4px);
+				left: 0;
+				transform-origin: left;
+				transition: .25s ease-in-out;
+				width: 100%;
+				height:1px;
+				background-color: currentColor;
+				transform: scaleX(0);
+			}
+			
+			&:hover svg {
+				animation: wobble 1s ease infinite;
+			}
+			&:hover span:after {
+				transform: scaleX(1);
+			}
+		}
+    }
+    &__right {
+        width: 50%;
+        position: relative;
+        padding-left: calc(var(--page-side-fields) * 2);
+        padding-right: calc(var(--page-side-fields) * 2);
+        @include from(1025px){
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 1px;
+                height: calc(100% + var(--section-v-offset) * 4);
+                transform: translateY(calc(var(--section-v-offset) * -1));
+                opacity: 0.5;
+                background: var(--color-ochre);
+            }
+        }
+        @include to(1024px){
+            width: 100%;
+        }
+        @include to(600px){
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &-title {
+            @include to(1024px){
+                padding-right: 50%;
+            }
+        }
+        &-text {
+            margin-top: 12px;
+        }
+        .dzen-form {
+            width: calc(100% - pxWidthInVw(210));
+            margin-left: auto;
+            margin-top: var(--section-v-offset);
+            @include to(1024px){
+                width: calc(100% - 240px);
+                margin-top: calc(var(--section-v-offset) * 1.65);
+            }
+            @include to(600px){
+                width: calc(100% - 40px);
+                margin-top: calc(var(--section-v-offset) * 2);
+            }
+            [data-success] {
+                background-color: transparent !important;
+            }
+        }
+    }
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

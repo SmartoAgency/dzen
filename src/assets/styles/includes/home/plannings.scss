@@ -1,0 +1,110 @@
+.plannings {
+    padding-top: calc(var(--section-v-offset) * 1.5);
+    padding-bottom: var(--section-v-offset);
+    background-color: var(--color-white-bb);
+    @include to(1024px){
+        padding-top: var(--section-v-offset);
+        padding-bottom: var(--section-v-offset);
+    }
+    &__content {
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: pxWidthInVw(80);
+        @include to(1024px){
+            row-gap: 40px;
+        }
+        @include to(600px){
+            
+            row-gap: 20px;
+        }
+        
+        @include from(1025px){
+            &>.swiper-container {
+                padding-left: pxWidthInVw(210);
+            }
+        }
+    }
+    &__title {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: var(--page-side-fields);
+        @include to(600px){
+            padding-right: 0;
+        }
+        &-o {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            @include to(600px){
+                flex-direction: column;
+                gap: 0;
+            }
+            .swiper-button-disabled {
+                opacity: 0.5;
+                cursor: initial;
+                pointer-events: none;
+            }
+            button {
+                border-radius: 1000px;
+                position: relative;
+                width: 56px;
+                height: 56px;
+                overflow: hidden;
+                @include to(600px){
+                    width: 40px;
+                    height: 40px;
+                }
+                svg {
+                    position: relative;
+                    z-index: 2;
+                    @include to(600px){
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+                &::before {
+                    border-radius: 1000px;
+                    background: var(--color-black, #0A0F13);
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    // z-index: -1;
+                    transition: .25s ease-in-out;
+                }
+                &::after {
+                    border-radius: 1000px;
+                    background: var(--color-white-light);
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    // z-index: -1;
+                    transition: .25s ease-in-out;
+                    transform: translate3d(0, -100%, 0);
+                }
+                &:hover {
+                    svg [stroke] {
+                        stroke: var(--color-black);
+                    }
+                    &::before {
+                        transform: translate3d(0, 100%, 0);
+                    }
+                    &::after {
+                        transform: translate3d(0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+}
