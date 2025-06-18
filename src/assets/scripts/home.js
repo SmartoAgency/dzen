@@ -311,10 +311,6 @@ function homeFrontScreenAnimation() {
 
     const tl = gsap.timeline({
         paused: true,
-        once: () => {
-            // splitTitle.revert();
-            // splitDescription.revert();
-        }
     })
     tl.fromTo(splitTitle.lines, {
         yPercent: 100,
@@ -350,6 +346,10 @@ function homeFrontScreenAnimation() {
             amount: 0.15,
         }
     }, '<')
+    .add(() => {
+        splitTitle.revert();
+        splitDescription.revert();
+    })
 
 
 

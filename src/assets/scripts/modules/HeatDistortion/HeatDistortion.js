@@ -169,11 +169,43 @@
 	    });
 	  }
 	};
-	document.querySelector('.panorama-screen').addEventListener('mousemove', function (event) {
+
+	function observeVisibility(targetSelector, callback) {
+		const target = document.querySelector(targetSelector);
+		if (!target) {
+			console.error(`Елемент ${targetSelector} не знайдено`);
+			return;
+		}
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				callback(true, entry.target);
+			} else {
+				callback(false, entry.target);
+			}
+			});
+		}, {
+			root: null,          // viewport
+			rootMargin: '0px',
+			threshold: 0.1       // відсоток видимості елемента (0 — як тільки з'явиться, 1 — повністю)
+		});
+
+		observer.observe(target);
+	}
+
+	var isInViewport = false;
+
+	observeVisibility('.Background', (isVisible, el) => {
+		isInViewport = isVisible;
+	});
+
+	window.addEventListener('mousemove', function (event) {
+		if (!isInViewport) return;
 	  if (!isTouchDevice) {
 	    _gsap2.default.to(parallaxPos, 1, {
-	      x: event.pageX / window.innerWidth,
-	      y: event.pageY / window.innerHeight
+	      x: event.clientX / window.innerWidth,
+	      y: event.clientY / window.innerHeight
 	    });
 	  }
 	});

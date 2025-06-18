@@ -65,7 +65,7 @@
     &__title { 
         grid-area: title; 
         font-size: pxWidthInVw(140);
-        line-height: 80%;
+        line-height: 110%;
         text-transform: uppercase;
         font-family: $default-font2;
         font-weight: 300;
@@ -123,6 +123,9 @@
     }
     .button-small { 
         grid-area: button; 
+        @include from(1025px){
+            height: 42px;
+        }
         
     }
     &__card1 { 
