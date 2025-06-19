@@ -7,6 +7,9 @@
         .swiper-slide {
             position: relative;
             padding-bottom: 50%;
+            @include to(600px){
+                padding-bottom: 56%;
+            }
             img {
                 position: absolute;
                 left: 0;

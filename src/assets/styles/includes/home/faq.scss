@@ -20,15 +20,21 @@
     }
     &__img {
         width: 50%;
-        position: sticky;
-        top: 0;
+        @include from(1025px){
+            position: sticky;
+            top: var(--header-h);
+
+        }
         @include to(1024px){
             width: 100%;
         }
         &-wrap {
             position: relative;
-            padding-bottom: 100%;
+            // padding-bottom: 100%;
             overflow: hidden;
+            @include from(1025px){
+                height: calc(100vh - var(--header-h));
+            }
             @include to(1024px){
                 padding-bottom: 29%;
             }

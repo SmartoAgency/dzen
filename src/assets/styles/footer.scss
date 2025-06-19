@@ -16,6 +16,11 @@
   @include from-to(601px, 1024px){
     padding-right: var(--page-side-fields);
   }
+  @include to(600px){
+    .color-black {
+      padding-bottom: 12px;
+    }
+  }
   .delimiter {
     margin-bottom: 40px;
   }

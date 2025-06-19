@@ -48,6 +48,10 @@
 		display: flex;
 		align-items: center;
 		padding-left: pxWidthInVw(40);
+		.button-small {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
 		@include from(1025px){
 			.button-small  {
 				margin-right: 0 !important;

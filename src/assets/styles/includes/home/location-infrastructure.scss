@@ -3,6 +3,9 @@
     &__content {
         display: flex;
         flex-wrap: wrap;
+        @include from(1025px){
+            min-height: calc(100vh - var(--header-h));
+        }
     }
     &__left {
         width: 50%;

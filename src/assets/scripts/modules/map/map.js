@@ -6,7 +6,7 @@ export default function googleMap() {
 }
 
 const MAP_PARAMS = {
-  zoom: 16,
+  zoom: 10,
   scrollwheel: false,
   navigationControl: false,
   mapTypeControl: false,
@@ -18,7 +18,7 @@ const MAP_PARAMS = {
 }
 
 const CENTER = {
-    "lat": 48.320652398252484, "lng": 24.474405534298295
+    "lat": 50.79661050526192, "lng": 30.36764581724879
 }
 
 const baseFolder = window.location.href.match(/localhost|verstka/)
@@ -36,7 +36,7 @@ async function startLoadGoogleMap() {
 const maps = document.querySelectorAll('.map');
 
 maps.forEach(($map) => {
-  if (window.location.href.match(/localhost/)) return;
+  // if (window.location.href.match(/localhost/)) return;
   const callback = (entries, observer) => {
     /* Content excerpted, show below */
     entries.forEach((entry) => {
@@ -58,7 +58,7 @@ window.initMap = initMap;
 function initMap() {
   const gmarkers1 = [];
   const center = {
-    "lat": 48.320652398252484, "lng": 24.474405534298295
+    "lat": 50.79661050526192, "lng": 30.36764581724879
   };
   /** Массив, куда записываются выбраные категории */
   let choosedCategories = new Set();
@@ -73,30 +73,30 @@ function initMap() {
   window.googleMap = map;
   const gDistanceMarkers = [];
 
-  gDistanceMarkers.push(iniCircleWithTooltip({
-    map,
-    radius: 500,
-    tooltipImgUrl: `${baseFolder}500m.svg`,
-    center
-  }))
-  gDistanceMarkers.push(iniCircleWithTooltip({
-    map,
-    radius: 1000,
-    tooltipImgUrl: `${baseFolder}1km.svg`,
-    center
-  }));
+  // gDistanceMarkers.push(iniCircleWithTooltip({
+  //   map,
+  //   radius: 500,
+  //   tooltipImgUrl: `${baseFolder}500m.svg`,
+  //   center
+  // }))
+  // gDistanceMarkers.push(iniCircleWithTooltip({
+  //   map,
+  //   radius: 1000,
+  //   tooltipImgUrl: `${baseFolder}1km.svg`,
+  //   center
+  // }));
 
-  gDistanceMarkers.push(iniCircleWithTooltip({
-    map,
-    radius: 1500,
-    tooltipImgUrl: `${baseFolder}1_5km.svg`,
-    center
-  }));
+  // gDistanceMarkers.push(iniCircleWithTooltip({
+  //   map,
+  //   radius: 1500,
+  //   tooltipImgUrl: `${baseFolder}1_5km.svg`,
+  //   center
+  // }));
 
-  google.maps.event.addDomListener(window, "resize", function () {
-    google.maps.event.trigger(map, "resize");
-    map.fitBounds(bounds);
-  });
+  // google.maps.event.addDomListener(window, "resize", function () {
+  //   google.maps.event.trigger(map, "resize");
+  //   map.fitBounds(bounds);
+  // });
 
   google.maps.event.addListener(map, 'zoom_changed', function () {
     gDistanceMarkers.forEach((group) => {

@@ -7,8 +7,10 @@
         padding-bottom: var(--section-v-offset);
     }
     &__content {
-        padding-left: var(--page-side-fields);
-        padding-right: var(--page-side-fields);
+        @include to(1025px){
+            padding-left: var(--page-side-fields);
+            padding-right: var(--page-side-fields);
+        }
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -24,6 +26,14 @@
         @include from(1025px){
             &>.swiper-container {
                 padding-left: pxWidthInVw(210);
+                padding-right: pxWidthInVw(210);
+            }
+        }
+
+        &>.swiper-container {
+            cursor: grab;
+            @include to(600px){
+                margin-right: -20px;
             }
         }
     }
@@ -33,6 +43,10 @@
         align-items: center;
         justify-content: space-between;
         padding-right: var(--page-side-fields);
+        @include from(1025px){
+            padding-right: calc(var(--page-side-fields) * 2);
+            padding-left: var(--page-side-fields);
+        }
         @include to(600px){
             padding-right: 0;
         }

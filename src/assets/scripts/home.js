@@ -113,17 +113,19 @@ planningsSliders();
 function planningsBigSlider() {
     new Swiper('[data-plannings-slider]', {
         spaceBetween: 15,
-        slidesPerView: 3.1,
+        slidesPerView: 2.85,
         navigation: {
             nextEl: '[data-plannings-slider-next]',
             prevEl: '[data-plannings-slider-prev]',
         },
         breakpoints: {
             320: {
-                slidesPerView: 1,
+                slidesPerView: 1.05,
+                spaceBetween: 6,
             },
             1025: {
-                slidesPerView: 3.1,
+                slidesPerView: 2.85,
+                spaceBetween: 15,
             }
         },
     })
@@ -133,7 +135,7 @@ planningsBigSlider();
 
 function projectsSlider() {
     new Swiper('[data-projects-swiper]', {
-        slidesPerView: 3.33,
+        slidesPerView: 3.05,
 
         navigation: {
             nextEl: '[data-projects-swiper-next]',
@@ -141,11 +143,11 @@ function projectsSlider() {
         },
         breakpoints: {
             320: {
-                slidesPerView: 1,
-                spaceBetween: 22,
+                slidesPerView: 1.01,
+                spaceBetween: 7,
             },
             1025: {
-                slidesPerView: 3.33,
+                slidesPerView: 3.05,
                 spaceBetween: 1,
             }
         },
@@ -200,7 +202,7 @@ function managmetnScreenAnimation() {
         gsap.timeline({
             scrollTrigger: {
                 trigger: el,
-                start: '50% 80%',
+                start: '20% 100%',
                 once: true,
             }
         })
@@ -210,7 +212,7 @@ function managmetnScreenAnimation() {
         }, {
             autoAlpha: 1,
             y: 0,
-            duration: 1.25,
+            duration: 1,
             stagger: {
                 amount: 0.15,
             },
@@ -269,61 +271,21 @@ function teamParalax() {
 teamParalax();
 
 
-function faqParalax() {
-    const trigger = document.querySelector('.faq__img');
-    const img = document.querySelector('.faq__img img');
-    if (!trigger || !img) return;
-    gsap.set(img, {
-        scale: 1.2,
-    })
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: trigger,
-            scrub: true,
-            invalidateOnRefresh: true,
-        }
-    })
-    tl.fromTo(img, {
-        y: -100,
-    }, {
-        y: 100,
-        ease: 'none',
-    });
-}
-
-faqParalax();
-
-
 function homeFrontScreenAnimation() {
-    const splitTitle = SplitText.create('.home-front-screen__title', { type: "lines", linesClass: "line" });
+    // const splitTitle = SplitText.create('.home-front-screen__title', { type: "lines", linesClass: "line" });
     const splitDescription = SplitText.create('.home-front-screen__description', { type: "lines", linesClass: "line" });
-    gsap.set(splitTitle.lines, {
-        yPercent: 100,
-        autoAlpha: 0,
-    });
     gsap.set(splitDescription.lines, {
         yPercent: 100,
         autoAlpha: 0,
     });
-    gsap.set('.home-front-screen__content>.button-small, .home-front-screen__card1, .home-front-screen__card2', {
+    gsap.set('.home-front-screen__title, .home-front-screen__content>.button-small, .home-front-screen__card1, .home-front-screen__card2', {
         autoAlpha: 0,
     });
 
     const tl = gsap.timeline({
         paused: true,
     })
-    tl.fromTo(splitTitle.lines, {
-        yPercent: 100,
-        autoAlpha: 0,
-    }, {
-        yPercent: 0,
-        autoAlpha: 1,
-        duration: 1.25,
-        ease: "power4.out",
-        stagger: {
-            amount: 0.15,
-        }
-    })
+    
     .fromTo(splitDescription.lines, {
         yPercent: 100,
         autoAlpha: 0,
@@ -336,6 +298,15 @@ function homeFrontScreenAnimation() {
             amount: 0.15,
         }
     })
+    tl.fromTo('.home-front-screen__title', {
+        // yPercent: 100,
+        autoAlpha: 0,
+    }, {
+        // yPercent: 0,
+        autoAlpha: 1,
+        duration: 1.25,
+        ease: "power4.out",
+    })
     .fromTo('.home-front-screen__content>.button-small, .home-front-screen__card1, .home-front-screen__card2', {
         autoAlpha: 0,
     }, {
@@ -347,7 +318,7 @@ function homeFrontScreenAnimation() {
         }
     }, '<')
     .add(() => {
-        splitTitle.revert();
+        // splitTitle.revert();
         splitDescription.revert();
     })
 

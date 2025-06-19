@@ -66,12 +66,12 @@
     
     var textureAlign = { x: 0.5, y: 0.9 };
     var textures = [{
-      file: './assets/images/home/screen2.jpg',
+      file: document.documentElement.dataset.base ? document.documentElement.dataset.base+'/assets/images/home/screen2.jpg' : './assets/images/home/screen2.jpg',
       name: 'image',
       align: textureAlign,
       scale: { x: 1, y: 1 }
     }, {
-      file: './assets/images/home/screen2-map.jpg',
+      file: document.documentElement.dataset.base ? document.documentElement.dataset.base+'/assets/images/home/screen2-map.jpg' : './assets/images/home/screen2-map.jpg',
       name: 'maps',
       align: textureAlign,
       scale: { x: 0.2, y: 0.2 }

@@ -126,7 +126,13 @@
         display: none;
     }
     [data-success] {
-        background-color: var(--color-white-bb) !important;
+        @include from(601px){
+            background-color: var(--color-white-bb) !important;
+        }
+        @include to(600px){
+            background-color: transparent !important;
+        }
+
     }
     &__success {
         position: absolute;

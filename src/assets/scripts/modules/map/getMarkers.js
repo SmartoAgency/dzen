@@ -43,7 +43,7 @@ export async function fetchMarkersData(google) {
 }
 
 async function getMarkersFromJson() {
-    const url = window.location.href.match(/localhost|verstka/) ? '/static/google-markers.json' : '/wp-content/themes/3d/assets/static/google-markers.json';
+    const url = window.location.href.match(/localhost|verstka/) ? '/static/google-markers.json' : '/wp-content/themes/3d/static/google-markers.json';
     const response = await fetch(url, {
         method: 'GET',
     });

@@ -66,12 +66,12 @@
 	
 	var textureAlign = { x: 0.5, y: 0.9 };
 	var textures = [{
-	  file: './assets/images/water.jpg',
+	  file: document.documentElement.dataset.base ? document.documentElement.dataset.base+'/assets/images/water.jpg' : './assets/images/water.jpg',
 	  name: 'image',
 	  align: textureAlign,
 	  scale: { x: 1, y: 1 }
 	}, {
-	  file: './assets/images/water-map.jpg',
+	  file: document.documentElement.dataset.base ? document.documentElement.dataset.base+'/assets/images/water-map.jpg' : './assets/images/water-map.jpg',
 	  name: 'maps',
 	  align: textureAlign,
 	  scale: { x: 0.2, y: 0.2 }

@@ -8,9 +8,12 @@
         padding-bottom: var(--section-v-offset);
     }
     .swiper-container {
+        cursor: grab;
         padding-left: pxWidthInVw(180);
+        padding-right: pxWidthInVw(180);
         @include to(1024px){
             padding-left: 163px;
+            padding-right: 163px;
         }
         @include to(600px){
             padding: 0 var(--page-side-fields);
