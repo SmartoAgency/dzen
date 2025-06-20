@@ -137,7 +137,7 @@
             padding-right: 0;
         }
         &-title {
-            @include to(1024px){
+            @include from-to(601px, 1024px){
                 padding-right: 50%;
             }
         }
