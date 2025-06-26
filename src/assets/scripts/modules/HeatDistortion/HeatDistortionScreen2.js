@@ -544,6 +544,28 @@
     var _eventDispatcher2 = _interopRequireDefault(_eventDispatcher);
     
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function trackVisibility(targetSelector, callback) {
+		const target = document.querySelector(targetSelector);
+		if (!target) {
+			console.warn(`Елемент ${targetSelector} не знайдено.`);
+			return;
+		}
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				callback('enter', entry.target);
+			} else {
+				callback('exit', entry.target);
+			}
+			});
+		}, {
+			threshold: 0.1 // 10% елемента видно — вважається в зоні видимості
+		});
+
+		observer.observe(target);
+	}
     
     function Haze(_ref) {
       var _this = this;
@@ -567,14 +589,29 @@
       });
     
       Promise.all(this._textures).then(start);
+
+       trackVisibility('#benefits', (eventType, element) => {
+        if (eventType === 'enter') {
+          window.dontUpdateHeatDistorion2 = false;
+        } else if (eventType === 'exit') {
+          window.dontUpdateHeatDistorion2 = true;
+        }
+      });
+
+      window.dontUpdateHeatDistorion2 = undefined;
     
       function start() {
+        
         var last = 0;
         var frame = 1000 / 60;
         var time = 0;
         gl.createUniform("1f", "time", time);
     
         (function update(now) {
+          if (window.dontUpdateHeatDistorion2 === true) {
+            requestAnimationFrame(update);
+            return;
+          }
           var delta = now - last;
           if (isNaN(delta)) {
             delta = frame;

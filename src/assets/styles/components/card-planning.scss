@@ -4,6 +4,7 @@
     border: 1px solid var(--color-ochre);
     background: var(--White-BB, #C1C2B2);
     &__slider {
+        cursor: zoom-in;
         .swiper-slide {
             position: relative;
             padding-bottom: 50%;

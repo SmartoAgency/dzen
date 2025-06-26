@@ -83,7 +83,7 @@ body input, body textarea {
 
 
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 10px;
 }
 
 /* Track */
@@ -95,7 +95,7 @@ body input, body textarea {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $mc;
+  background: var(--color-ochre);
   -webkit-box-shadow: inset 0 0 6px #E2E3E4;
   //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }

@@ -31,6 +31,10 @@
         position: absolute;
         top: calc(var(--section-v-offset) * 1.5);
         right: calc(var(--page-side-fields) * 2);
+        .swiper-button-disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
         @include to(1024px){
             top: var(--section-v-offset);
             right: var(--page-side-fields);

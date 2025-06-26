@@ -108,16 +108,20 @@
     }
     &__content>.button-small {
         @include to(1024px){
-            background-color: transparent;
-            color: var(--color-white-light);
+            background-color: transparent !important;
+            color: var(--color-white-light) !important;
             
             align-self: start;
             margin-top: 20px;
             svg [fill] {
-                fill: var(--color-white-light);
+                fill: var(--color-white-light) !important;
             }
             svg [stroke] {
-                stroke: var(--color-white-light);
+                stroke: var(--color-white-light) !important;
+            }
+            &:after,
+            &:before {
+                display: none !important;
             }
         }
     }

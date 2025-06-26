@@ -577,6 +577,28 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function trackVisibility(targetSelector, callback) {
+		const target = document.querySelector(targetSelector);
+		if (!target) {
+			console.warn(`Елемент ${targetSelector} не знайдено.`);
+			return;
+		}
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				callback('enter', entry.target);
+			} else {
+				callback('exit', entry.target);
+			}
+			});
+		}, {
+			threshold: 0.1 // 10% елемента видно — вважається в зоні видимості
+		});
+
+		observer.observe(target);
+	}
+
 	function Haze(_ref) {
 	  var _this = this;
 	
@@ -597,6 +619,16 @@
 	  this._textures = textures.map(function (v, i) {
 	    return loadTexture(_this, i, v);
 	  });
+
+	  trackVisibility('#panorama', (eventType, element) => {
+		if (eventType === 'enter') {
+			window.dontUpdateHeatDistorion1 = false;
+		} else if (eventType === 'exit') {
+			window.dontUpdateHeatDistorion1 = true;
+		}
+	});
+
+	window.dontUpdateHeatDistorion1 = undefined;
 	
 	  Promise.all(this._textures).then(start);
 	
@@ -607,6 +639,10 @@
 	    gl.createUniform("1f", "time", time);
 	
 	    (function update(now) {
+			if (window.dontUpdateHeatDistorion1 === true) {
+				requestAnimationFrame(update);
+				return;
+			}
 	      var delta = now - last;
 	      if (isNaN(delta)) {
 	        delta = frame;

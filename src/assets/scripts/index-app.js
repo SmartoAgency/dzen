@@ -107,8 +107,14 @@ useSetMenuEffect(val => {
 
 document.body.addEventListener('click', (evt) => {
     const target = evt.target.closest('[data-menu-call]');
-    if (target) {
+    
+    if (target && menuState() === false) {
         setMenuState(true);
+        return
+    }
+    console.log('menu state', menuState());
+    if (evt.target.closest('[data-menu-close]') && menuState()) {
+        setMenuState(false);
     }
 });
 
@@ -120,6 +126,9 @@ document.querySelectorAll('.menu__link').forEach(el => {
 
 document.body.addEventListener('click', (evt) => {
     const target = evt.target.closest('[data-menu-close]');
+    if (evt.target.closest('[data-menu-call]')) {
+        return;
+    }
     if (target || evt.target.classList.contains('menu')) {
         setMenuState(false);
     }
