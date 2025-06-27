@@ -42,7 +42,7 @@
         @include to(600px){
             display: flex;
             flex-direction: column;
-            gap: 0;
+            gap: 4px;
         }
         button {
             border-radius: 1000px;
@@ -102,6 +102,9 @@
     }
     &__item {
         position: relative;
+        height: auto;
+        flex-direction: column;
+        display: flex   ;
         &-img {
             padding-bottom: 64.23%;
             position: relative;
@@ -117,6 +120,7 @@
         &-text {
             padding: pxWidthInVw(40);
             background-color: var(--color-white-light);
+            flex-grow: 1;
             @include to(1024px){
                 padding: 40px;
             }

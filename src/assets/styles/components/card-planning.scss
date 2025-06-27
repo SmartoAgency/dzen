@@ -5,6 +5,7 @@
     background: var(--White-BB, #C1C2B2);
     &__slider {
         cursor: zoom-in;
+        width: 100%;
         .swiper-slide {
             position: relative;
             padding-bottom: 50%;

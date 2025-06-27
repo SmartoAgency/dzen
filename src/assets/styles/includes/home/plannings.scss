@@ -32,6 +32,16 @@
 
         &>.swiper-container {
             cursor: grab;
+            
+            .swiper-slide {
+                height: auto;
+                .card-planning {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+            }
             @include to(600px){
                 margin-right: -20px;
             }

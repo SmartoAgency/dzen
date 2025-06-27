@@ -37,8 +37,8 @@ const forms = [
               }, 10000);
             });
             setTimeout(() => {
-              $form.querySelector('[data-success]').remove();
               $form.classList.remove('success');
+              $form.querySelector('[data-success]').remove();
             }, 10000);
           },
           $btnSubmit: $form.querySelector('[data-btn-submit]'),

@@ -82,8 +82,14 @@ function planningsSliders() {
                 });
             Fancybox.show(
                 slides,
+                // clas
                 {
-                    // Your custom options
+                    on: {
+                        initLayout: (fancybox) => {
+                            fancybox.getContainer().setAttribute('data-lenis-prevent', '');
+                            
+                        }
+                    },
                 }
             );
         });
